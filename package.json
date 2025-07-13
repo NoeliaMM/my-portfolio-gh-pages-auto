@@ -1,7 +1,7 @@
 {
   "name": "mi-portfolio-vite",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "start": "run-p -l type-check:watch start:dev",
