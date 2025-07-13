@@ -1,0 +1,26 @@
+name: CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to production
+        run: npm run deploy
+
+      - name: Notify deployment success
+        run: echo "Deployment successful!"
+      
