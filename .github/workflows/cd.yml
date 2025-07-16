@@ -1,4 +1,4 @@
-name: CD Workflow
+name: CD workflow
 
 on:
   push:
@@ -15,26 +15,23 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
-     
+
       - name: Install
         run: npm ci
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: dist  
+          path: dist
 
-      - name: Deploy to production
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Notify deployment success
-        run: echo "Deployment successful!"
 
 # Para deploy subiendo ficheros estáticos
 # jobs:
